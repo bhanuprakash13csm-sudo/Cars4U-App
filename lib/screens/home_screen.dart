@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                                 trailing: Text(
-                                  '₹${car.price}',
+                                  '₹${car.price} Lakhs',
                                   style: const TextStyle(
                                     color: Colors.green, 
                                     fontWeight: FontWeight.bold, 
