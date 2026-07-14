@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
       results = _allCars;
     } else {
       results = _allCars.where((car) {
-        final searchString = '${car.make} ${car.model} ${car.year}'.toLowerCase();
+        final searchString = '${car.name} ${car.location} ${car.year}'.toLowerCase();
         return searchString.contains(enteredKeyword.toLowerCase());
       }).toList();
     }
@@ -130,29 +130,42 @@ class _HomeScreenState extends State<HomeScreen> {
                           final car = _filteredCars[index];
                           return Card(
                             elevation: 4,
-                            shadowColor: Colors.black26,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                            margin: const EdgeInsets.only(bottom: 16),
-                            child: ListTile(
-                              contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                              leading: Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent.withOpacity(0.1),
-                                  shape: BoxShape.circle,
+                            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0), 
+                              child: ListTile(
+                                leading: const CircleAvatar(
+                                  backgroundColor: Colors.blueAccent,
+                                  child: Icon(Icons.directions_car, color: Colors.white), // డాట్ సరిచేశాను
                                 ),
-                                child: const Icon(Icons.directions_car, color: Colors.blueAccent, size: 30),
+                                title: Text(
+                                  car.name,
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                ),
+                                subtitle: Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start, // 'C' పెద్దది చేశాను
+                                    children: [
+                                      Text('📍 Loc: ${car.location}  |  📅 Year: ${car.year}'),
+                                      const SizedBox(height: 4),
+                                      Text('⛽ Fuel: ${car.fuelType}  |  🛣️ KMs: ${car.kilometers}'),
+                                      const SizedBox(height: 4),
+                                      Text('⚙️ Engine: ${car.engineType}  |  ⚡ Mileage: ${car.mileage}'),
+                                    ],
+                                  ),
+                                ),
+                                trailing: Text(
+                                  '₹${car.price}',
+                                  style: const TextStyle(
+                                    color: Colors.green, 
+                                    fontWeight: FontWeight.bold, 
+                                    fontSize: 16
+                                  ),
+                                ),
                               ),
-                              title: Text('${car.make} ${car.model}', 
-                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                              subtitle: Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Text('Year: ${car.year}  •  Fuel: ${car.fuelType}'),
-                              ),
-                              trailing: Text('₹${car.price}', 
-                                style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 16)),
                             ),
-                          );
+                          ); 
                         },
                       ),
               ),
