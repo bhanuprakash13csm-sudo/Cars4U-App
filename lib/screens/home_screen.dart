@@ -27,8 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _loadCSV() async {
     try {
       final rawData = await rootBundle.loadString("assets/cars4u.csv");
-      final converter = const CsvToListConverter();
-      List<List<dynamic>> listData = converter.convert(rawData);
+      final fixedData = rawData.replaceAll('\r\n', '\n');
+      final converter = const CsvToListConverter(eol: '\n');
+      List<List<dynamic>> listData = converter.convert(fixedData);
       
       setState(() {
         _allCars = listData.skip(1).map((row) => Car.fromCsv(row)).toList();

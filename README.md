@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # cars_app
 
 A new Flutter project.
@@ -15,3 +16,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Cars4U-Inventory
+Cars4U-Inventory is a app that helps us to know more information about cars before we buy rather than blind  visit
+>>>>>>> 9f634b490fa87c44bffcc85b6e5cc9d09d75e68d
